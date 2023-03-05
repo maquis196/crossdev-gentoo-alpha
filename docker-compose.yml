@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  gentoo-crossdev-alpha:
+    image: local/gentoo-crossdev-alpha:stable
+    container_name: gentoo-crossdev-alpha
+    restart: unless-stopped
+    network_mode: "host"
