@@ -8,6 +8,17 @@ RUN mkdir -p /var/db/repos/crossdev/{profiles,metadata} && \
          'thin-manifests = true' > /var/db/repos/crossdev/metadata/layout.conf && \
     chown -R portage:portage /var/db/repos/crossdev
 
+RUN emerge --quiet dev-util/ccache
+RUN echo 'PATH="/usr/lib/ccache/bin:${PATH}"'\n\
+         'CCACHE_PREFIX="distcc"' > /etc/conf.d/distccd && \
+    echo 'CCACHE_DIR="/var/cache/ccache"'\n\
+         'DISTCC_DIR="/var/tmp/portage/.distcc"' > /etc/env.d/03distcc_ccache && \
+    mkdir "/var/cache/ccache/" && \
+    cd "/var/cache/ccache/" && \
+    mkdir -p "{a..z} {0..9} tmp"  && \
+    find /var/cache/ccache -type d -exec chown distcc:portage "{}" +
+
+
 ARG BINUTIL_VER='~2.40'
 ARG GCC_VER='~12.2.1_p20230121'
 ARG KERNEL_VER='~6.2'
