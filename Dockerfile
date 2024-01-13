@@ -19,14 +19,16 @@ RUN echo 'PATH="/usr/lib/ccache/bin:${PATH}"'\n\
     find /var/cache/ccache -type d -exec chown distcc:portage "{}" +
 
 
-ARG BINUTIL_VER='~2.40'
-ARG GCC_VER='~12.2.1_p20230121'
-ARG KERNEL_VER='~6.2'
-ARG LIBC_VER='~2.36'
+ARG BINUTIL_VER='~2.41'
+ARG GCC_VER='~gcc-13.2.1_p20230826'
+ARG KERNEL_VER='~6.6'
+ARG LIBC_VER='~2.37'
 
 ARG TARGET='alpha-unknown-linux-gnu'
 
-RUN crossdev --b "${BINUTIL_VER}" --g "${GCC_VER}" --k "${KERNEL_VER}" --l "${LIBC_VER}" -t "${TARGET}"
+###RUN crossdev --b "${BINUTIL_VER}" --g "${GCC_VER}" --k "${KERNEL_VER}" --l "${LIBC_VER}" -t "${TARGET}"
+RUN crossdev -t --g "${GCC_VER}" --l "${LIBC_VER}" "${TARGET}"
+
 
 #
 #

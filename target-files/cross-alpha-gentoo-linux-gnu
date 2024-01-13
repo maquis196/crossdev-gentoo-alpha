@@ -1,0 +1,5 @@
+cross-alpha-gentoo-linux-gnu/binutils alpha -amd64 -~amd64
+cross-alpha-gentoo-linux-gnu/gcc alpha -amd64 -~amd64
+cross-alpha-gentoo-linux-gnu/linux-headers alpha -amd64 -~amd64
+cross-alpha-gentoo-linux-gnu/glibc alpha -amd64 -~amd64
+cross-alpha-gentoo-linux-gnu/gdb alpha ~alpha -amd64 -~amd64 
